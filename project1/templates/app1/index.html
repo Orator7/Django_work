@@ -1,12 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>app1=====rehersal</title>
+    <title>django level 2</title>
+    <link rel="stylesheet" href="{% static 'app1/mystyle.css' %}"/>
 </head>
 <body>
-    <h1>App 1 - Rehersal......this is what I have learned so far</h1>
-    <h2>{{insert_content}}</h2>
+    <h1>Hi welcome to django level 2</h1>
+    <h2>Here are your access records</h2>
+    <h3>{{ insert_content }}</h3>
+    
+    <div class="djangtwo">
+        {% if access_record %}
+        <table>
+            <thead>
+                <th>Site Name</th>
+                <th>Date Accessed</th>
+            </thead>
+            <tbody>
+                {% for acc in access_record %}
+                <tr>
+                    <td>{{ acc.name }}</td>
+                    <td>{{ acc.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No Access records found</p>
+        {% endif %}
+    </div>
 </body>
 </html>
